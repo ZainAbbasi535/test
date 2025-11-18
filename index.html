@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Converter + Compressor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Image Converter + Compressor</h1>
+    <p>Upload, convert, compress, resize, and download single files or a ZIP.</p>
+  </header>
+  <main class="container">
+    <section class="card">
+      <div class="uploader" id="dropzone">
+        <input type="file" id="fileInput" multiple accept="image/*">
+        <div class="uploader-instructions">
+          <span>Drag & drop images here or tap to select</span>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label for="format">Target format</label>
+          <select id="format">
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WebP</option>
+            <option value="avif">AVIF</option>
+            <option value="tiff">TIFF</option>
+            <option value="bmp">BMP</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="quality">Quality</label>
+          <input type="range" id="quality" min="1" max="100" value="80">
+          <div class="range-value" id="qualityValue">80</div>
+        </div>
+        <div class="field-inline">
+          <div class="field">
+            <label for="width">Max width</label>
+            <input type="number" id="width" placeholder="e.g., 1920">
+          </div>
+          <div class="field">
+            <label for="height">Max height</label>
+            <input type="number" id="height" placeholder="e.g., 1080">
+          </div>
+        </div>
+        <div class="field">
+          <label class="checkbox">
+            <input type="checkbox" id="preserveExif"> Preserve metadata (EXIF)
+          </label>
+        </div>
+      </div>
+      <button id="convertBtn" class="btn">Convert</button>
+      <div id="status" class="status"></div>
+      <div class="selected">
+        <div class="selected-toolbar">
+          <div id="selectedInfo" class="selected-info">No files selected</div>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+        </div>
+        <div id="thumbs" class="thumb-grid"></div>
+      </div>
+    </section>
+    <section class="card">
+      <div class="results-header">
+        <h2>Results</h2>
+        <a id="zipLink" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Download All (ZIP)</a>
+      </div>
+      <ul id="results" class="results"></ul>
+    </section>
+  </main>
+  <footer class="footer">Works locally. Files are processed in memory and expire after 10 minutes.</footer>
+  <script src="/main.js"></script>
+</body>
+</html>
